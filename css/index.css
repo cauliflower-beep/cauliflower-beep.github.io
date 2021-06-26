@@ -544,7 +544,7 @@ figure.gallery-group .gallery-group-name {
     opacity: 0;
   }
   100% {
-    opacity: '';
+    opacity: 0.6;
   }
 }
 @-webkit-keyframes ribbon_to_show {
@@ -552,7 +552,7 @@ figure.gallery-group .gallery-group-name {
     opacity: 0;
   }
   100% {
-    opacity: '';
+    opacity: 0.6;
   }
 }
 @-o-keyframes ribbon_to_show {
@@ -560,7 +560,7 @@ figure.gallery-group .gallery-group-name {
     opacity: 0;
   }
   100% {
-    opacity: '';
+    opacity: 0.6;
   }
 }
 @keyframes ribbon_to_show {
@@ -568,7 +568,7 @@ figure.gallery-group .gallery-group-name {
     opacity: 0;
   }
   100% {
-    opacity: '';
+    opacity: 0.6;
   }
 }
 @-moz-keyframes avatar_turn_around {
