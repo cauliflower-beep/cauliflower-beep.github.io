@@ -16,18 +16,18 @@
 <meta property="og:site_name" content="小花椰种植员">
 <meta property="og:description" content="前言Redis是一个高性能的分布式内存数据库，目前在国内外个大互联网公司中都有着广泛的使用，即使是一些非互联网公司也有着非常重要的使用场景。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://cauliflower-beep.github.io/images/image-20200626095844113.png">
-<meta property="og:image" content="https://cauliflower-beep.github.io/images/image-20200626101327742.png">
-<meta property="og:image" content="https://cauliflower-beep.github.io/images/image-20200626105857594.png">
-<meta property="og:image" content="https://cauliflower-beep.github.io/images/image-20200626122033221.png">
-<meta property="og:image" content="https://cauliflower-beep.github.io/images/image-20200626123309037.png">
+<meta property="og:image" content="https://cauliflower-beep.github.io/image-20200626095844113.png">
+<meta property="og:image" content="https://cauliflower-beep.github.io/image-20200626101327742.png">
+<meta property="og:image" content="https://cauliflower-beep.github.io/image-20200626105857594.png">
+<meta property="og:image" content="https://cauliflower-beep.github.io/image-20200626122033221.png">
+<meta property="og:image" content="https://cauliflower-beep.github.io/image-20200626123309037.png">
 <meta property="article:published_time" content="2021-06-24T03:51:21.175Z">
-<meta property="article:modified_time" content="2021-06-24T03:53:22.074Z">
+<meta property="article:modified_time" content="2021-06-26T05:37:28.528Z">
 <meta property="article:author" content="种植员先生">
 <meta property="article:tag" content="redis">
 <meta property="article:tag" content="数据结构">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cauliflower-beep.github.io/images/image-20200626095844113.png">
+<meta name="twitter:image" content="https://cauliflower-beep.github.io/image-20200626095844113.png">
   
     <link rel="alternative" href="/atom.xml" title="小花椰种植员" type="application/atom+xml">
   
@@ -206,7 +206,7 @@
 <li>Sort Set（排起名来我最棒）</li>
 </ul>
 <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>字符串类型是Redis最基础的数据结构，其他几种数据结构都是在字符串类型基础上构建的。字符串类型的值是字符串（简单的字符串、复杂的字符串（例如JSON、XML））、数字（整数、浮点数），甚至是二进制（图片、音频、视频）等。</p>
-<p><img src="/images/image-20200626095844113.png" alt="image-20200626095844113"></p>
+<p><img src="/image-20200626095844113.png" alt="image-20200626095844113"></p>
 <p>字符串对象的内部编码有3种 ：<strong>int</strong>、<strong>raw</strong> 和 <strong>embstr</strong>，Redis会根据当前值的类型和长度来决定使用哪种编码来实现</p>
 <ul>
 <li>int：如果一个字符串对象保存的是整数值,并且这个整数值可以用<code>long</code>类型来表示</li>
@@ -222,7 +222,7 @@
 </ul>
 <p>关于更加详细的关于字符串结构的介绍，参考<a target="_blank" rel="noopener" href="https://blog.laoyu.site/2019/redis/Redis%E5%AF%B9%E8%B1%A1%E2%80%94%E2%80%94%E5%AD%97%E7%AC%A6%E4%B8%B2(String)">这篇博客</a></p>
 <h2 id="哈希"><a href="#哈希" class="headerlink" title="哈希"></a>哈希</h2><p>哈希对象用来存储一组数据对。每个数据对又包含键值两部分</p>
-<p><img src="/images/image-20200626101327742.png" alt="image-20200626101327742"></p>
+<p><img src="/image-20200626101327742.png" alt="image-20200626101327742"></p>
 <p>Hash对象也有两种实现方式：<a target="_blank" rel="noopener" href="https://blog.laoyu.site/2019/redis/Redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E5%8E%8B%E7%BC%A9%E5%88%97%E8%A1%A8">ziplist（压缩列表）</a>和 <a target="_blank" rel="noopener" href="https://blog.laoyu.site/2018/redis/Redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E5%AD%97%E5%85%B8">hashtable（哈希表）</a></p>
 <p>同样，只有当存储的数据量比较小的情况下，Redis才使用压缩列表来实现哈希对象，具体需要满足两个条件</p>
 <ul>
@@ -234,7 +234,7 @@
 <p>但是也有其缺点，就是要控制哈希在ziplist和hashtable两种内部编码的转换，hashtable将会消耗更多的内存。</p>
 <p>此外，Hash对象还可以实现购物车和计数器等功能，更详细的介绍，参考<a target="_blank" rel="noopener" href="https://blog.laoyu.site/2020/redis/Redis%E5%AF%B9%E8%B1%A1%E2%80%94%E2%80%94%E5%93%88%E5%B8%8C(Hash)">这篇博客</a></p>
 <h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>列表这种对象支持存储一组有序的，不重复的数据。因为其有序性，它可以获取指定范围的元素列表，可以在O(1)的时间复杂度获取指定索引的下标的元素等。</p>
-<p><img src="/images/image-20200626105857594.png" alt="image-20200626105857594"></p>
+<p><img src="/image-20200626105857594.png" alt="image-20200626105857594"></p>
 <p>在Redis3.2版本以前列表类型的内部编码有两种。当满足下面两个条件的时候，Redis 列表对象使用ziplist（压缩列表）来实现。</p>
 <ul>
 <li>当列表的元素个数小于list-max-ziplist-entries配置（默认512个）</li>
@@ -246,7 +246,7 @@
 <p>列表类型可以lpush（左侧push），同时又可以使用rpop（右侧弹出）第一个元素，所以列表类型具有先进先出的特性，可以用来实现消息队列，也可以lpush（左侧push）和lpop（左侧弹出），具有后进先出的特性，因此开发中需要使用栈的时候，我们可以使用列表对象来实现。</p>
 <p>关于List更详细的介绍，参考<a target="_blank" rel="noopener" href="https://blog.laoyu.site/2020/redis/Redis%E5%AF%B9%E8%B1%A1%E2%80%94%E2%80%94%E5%88%97%E8%A1%A8(List)">这篇博客</a></p>
 <h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><p>集合对象是一个无序且唯一的键值集合。它的存储顺序不会按照插入的先后顺序进行存储，与列表不同的是它存储的数据是无序且不重复的。</p>
-<p><img src="/images/image-20200626122033221.png" alt="image-20200626122033221"></p>
+<p><img src="/image-20200626122033221.png" alt="image-20200626122033221"></p>
 <p>集合对象的内部编码也有两种，intest（整数集合）与hashtable（哈希表），当满足下面两个条件的时候，集合对象使用intset来实现</p>
 <ul>
 <li>集合中的元素都是整数</li>
@@ -257,7 +257,7 @@
 <p>而集合中的 <a target="_blank" rel="noopener" href="https://blog.laoyu.site/2020/redis_command/set/spop/">SPOP(随机移除并返回集合中一个或多个元素)</a> 和 <a target="_blank" rel="noopener" href="https://blog.laoyu.site/2020/redis_command/set/srandmember/">SRANDMEMBER(随机返回集合中一个或多个元素)</a> 命令可以帮助我们实现一个抽奖系统</p>
 <p>有关Set更详细的介绍，参考<a target="_blank" rel="noopener" href="https://blog.laoyu.site/2020/redis/Redis%E5%AF%B9%E8%B1%A1%E2%80%94%E2%80%94%E9%9B%86%E5%90%88(Set)/">这篇博客</a></p>
 <h2 id="有序集合"><a href="#有序集合" class="headerlink" title="有序集合"></a>有序集合</h2><p>有序集合类型 (Sorted Set或ZSet) 相比于集合类型多了一个排序属性 score（分值），对于有序集合 ZSet 来说，每个存储元素相当于有两个值组成的，一个是有序结合的元素值，一个是排序值。有序集合保留了集合不能有重复成员的特性(分值可以重复)，但不同的是，有序集合中的元素可以排序。</p>
-<p><img src="/images/image-20200626123309037.png" alt="image-20200626123309037"></p>
+<p><img src="/image-20200626123309037.png" alt="image-20200626123309037"></p>
 <p>有序集合是由 <a target="_blank" rel="noopener" href="http://blog.laoyu.site/2019/redis/Redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E5%8E%8B%E7%BC%A9%E5%88%97%E8%A1%A8/">ziplist (压缩列表)</a> 或 <a target="_blank" rel="noopener" href="https://blog.laoyu.site/2019/redis/Redi%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E8%B7%B3%E8%B7%83%E8%A1%A8/">skiplist (跳跃表)</a> 组成的。</p>
 <p>当数据比较少时，有序集合使用的是 ziplist 存储的，有序集合使用 ziplist 格式存储必须满足以下两个条件：</p>
 <ul>
